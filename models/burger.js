@@ -1,24 +1,24 @@
 // Import orm object
-const orm = require('../config/orm');
+const orm = require('../config/orm.js');
 
-// ORM calls here
+// Model construction
 const burger = {
-    selectAll: (cb) => {
-        orm.all("burgers", (res) => {
-            cb(res);
-        });
+    select: (callback) => {
+        orm.select("burgers", (res) => {
+        callback(res);
+    });
     },
-    insertOne: (cb) => {
-        orm.create("burgers", (res) => {
-            cb(res);
-        });
+    create: (cols, vals, callback) => {
+        orm.create("burgers", cols, vals, (res) => {
+        callback(res);
+    });
     },
-    updateOne: (cb) => {
-        orm.update("burgers", (res) => {
-            cb(res);
-        });
+    update: (objColVals, condition, callback) => {
+        orm.update("burgers", objColVals, condition, (res) => {
+        callback(res);
+    });
     }
 };
 
-// Export database functions
+// Export model
 module.exports = burger;
