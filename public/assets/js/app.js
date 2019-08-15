@@ -42,6 +42,14 @@ $(function() {
       });
     // Send POST request
 
+    // Modal handling
+    $("#showModal").click(function() {
+      $(".modal").addClass("is-active");  
+    });
+    
+    $("#closeModal").click(function() {
+       $(".modal").removeClass("is-active");
+    });
   
 });
   

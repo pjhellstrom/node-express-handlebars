@@ -1,5 +1,5 @@
 # node-express-handlebars
-Built on MySQL, Node, Express, Handlebars and an ORM
+Built on MySQL, Node, Express, Handlebars leveraging a custom ORM. The server routes a get request upon launch that populates data into a handlebars file from the database. A post request is routed to the REST api and saves a new entry in the database. Finally a put request will change the status of the items in the database/ REST api. CSS is done with Bulma.
 
 ### Requirements
 
@@ -13,11 +13,11 @@ Built on MySQL, Node, Express, Handlebars and an ORM
 
 * [Handlebars.js](https://www.npmjs.com/package/handlebars)
 
-* [Object Relational Mapping](https://www.npmjs.com/package/orm)
+* [ORM](https://www.npmjs.com/package/orm)
 
 ### Launch
 
-The application will been deployed on Heroku.
+The application has been deployed on [Heroku](https://mighty-ridge-71527.herokuapp.com/)
 
 To run locally, download the repo into a new directory run use the npm i command to install dependencies:
 
@@ -55,16 +55,18 @@ $ node server.js
 │
 ├── public
 │   └── assets
-│       ├── css
-│       │   └── burger_style.css
-│       └── img
-│           └── burger.png
-│   
+│       └── css
+│       │   └── style.css
+│       └── js
+│           └── app.js
 │
 ├── server.js
 │
 └── views
-├── index.handlebars
-└── layouts
-└── main.handlebars
+    ├── index.handlebars
+    ├── layouts
+    │   └── main.handlebars
+    └── partials
+        └── burgers
+            └── burger-block.handlebars
 ```

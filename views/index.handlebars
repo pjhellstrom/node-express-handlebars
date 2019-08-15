@@ -1,32 +1,100 @@
-<h1>Burgers!</h1>
+<section class="hero is-dark is-fullheight">
 
-<h2>Burgers to eat</h2>
+        <div class="hero-head">
+          <header class="navbar">
+            <div class="container">
+              <div class="navbar-brand">
+                <a class="navbar-item has-text-weight-bold has-text-white is-size-2 custom-text-shadow" href=".">
+                  Burger Time!
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenuHeroC">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+              <div id="navbarMenuHeroC" class="navbar-menu">
+                <div class="navbar-end">
+                  <a class="button is-medium is-warning is-outlined" id="showModal">
+                      <span class="icon">
+                        <i class="far fa-plus-square"></i>
+                      </span>
+                      <span>Add a Burger</span>
+                    </a>
+                  <a class="button is-medium is-info is-outlined" href="https://github.com/pjhellstrom/node-express-handlebars" target="_blank">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>GitHub Repo</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </header>
+        </div>
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-desktop">
+                    <div class="container column is-half-mobile">
+                        <div class="notification custom-gradient-alpha custom-border-round custom-shadow">
+                          <p class="title has-text-white custom-text-shadow">Burgers to Eat</p>
+                            {{#each burgers}}
+                              {{#unless devoured}}
+                                {{> burgers/burger-block eat=true}}
+                              {{/unless}}
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="container column is-half-mobile">
+                        <div class="notification custom-gradient-beta custom-border-round custom-shadow">
+                          <p class="title has-text-white custom-text-shadow">Burgers Eaten</p>
+                            {{#each burgers}}
+                              {{#if devoured}}
+                                {{> burgers/burger-block eat=false}}
+                              {{/if}}
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <footer class="hero-foot">
+          <nav class="tabs is-boxed is-centered">
+            <div class="container">
+              <ul>
+                <li><a class="is-large" href="https://pjhellstrom.github.io/portfolio/" target="_blank">&copy; Jonas Hellstrom 2019</a></li>
+              </ul>
+            </div>
+          </nav>
+        </footer>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block eat=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+        <div class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+                <header class="modal-card-head">
+                  <p class="modal-card-title has-text-weight-semibold">Let's Add Some Burgers</p>
+                  <button class="delete" id="closeModal" aria-label="close"></button>
+                </header>
+            <!-- Any other Bulma elements you want -->
+            <section class="modal-card-body">
 
-<h2>Burgers eaten</h2>
+              <form class="create-form">
+                <div class="field">
+                  <label class="label">What burger are you adding?</label>
+                  <div class="control">
+                    <input class="input" id="input" name="name" type="text" placeholder="Input here">
+                  </div>
+                  <p class="help has-text-grey">Naming is key...</p>
+                </div>
+                  <div class="control">
+                    <button class="button is-warning" type="submit" id="submit_btn">Add it!</button>
+                  </div>
+              </form>
+          </div>
+        </div>
 
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block eat=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+      </section>
 
-<h2>Add a Burger</h2>
-<form class="create-form">
 
-  <div class="form-group">
-    <label for="input">Burger Name:</label>
-    <input type="text" id="input" name="name">
-  </div>
 
-  <button type="submit" id="submit_btn">Add</button>
-</form>
